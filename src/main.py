@@ -1,11 +1,11 @@
 import schedule
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from scripts.fetcher import fetch_item_page
-from scripts.parser import parse_item_details
-from scripts.generator import generate_data
-from scripts.database import save_to_db
-from scripts.utils import load_proxies, load_config, load_item_urls
+from fetcher import fetch_item_page
+from parser import parse_item_details
+from generator import generate_data
+from database import save_to_db
+from utils import load_proxies, load_config, load_item_urls
 
 def process_item(item_url, proxies_list, retries, backoff_factor):
     try:
@@ -29,7 +29,7 @@ def process_items_concurrently(item_urls, proxies_list, retries, backoff_factor,
                 print(f"Error processing {url}: {e}")
 
 def main():
-    config = load_config('config.ini')
+    config_path = "config/config.ini"
     
     # Load proxies from configuration
     proxies_list = load_proxies(config['DEFAULT']['ProxiesFile'])
@@ -44,7 +44,7 @@ def main():
     process_items_concurrently(item_urls, proxies_list, retries, backoff_factor, max_workers)
 
 def schedule_tasks():
-    config = load_config('config.ini')
+    config = load_confislacg('config.ini')
     schedule_interval = int(config['DEFAULT']['ScheduleInterval'])
     
     # Schedule the main task to run at the specified interval

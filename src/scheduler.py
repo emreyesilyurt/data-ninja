@@ -1,6 +1,6 @@
 import schedule
 import time
-from scripts.main import main
+from src.main import main
 
 def schedule_tasks():
     # Schedule the main task to run every hour

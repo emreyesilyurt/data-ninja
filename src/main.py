@@ -1,11 +1,11 @@
 import schedule
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from fetcher import fetch_item_page
-from parser import parse_item_details
-from generator import generate_data
-from database import save_to_db
-from utils import load_proxies, load_config, load_item_urls
+from scripts.fetcher import fetch_item_page
+from scripts.parser import parse_item_details
+from scripts.generator import generate_data
+from scripts.database import save_to_db
+from scripts.utils import load_proxies, load_config, load_item_urls
 
 def process_item(item_url, proxies_list, retries, backoff_factor):
     try:

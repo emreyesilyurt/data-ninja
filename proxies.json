@@ -1,0 +1,6 @@
+{
+    "proxies": [
+        "http://your_proxy",
+        "http://your_proxy"
+    ]
+}
